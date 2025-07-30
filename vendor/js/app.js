@@ -1,15 +1,18 @@
 let settingsGear = document.getElementsByClassName('settings')[0];
 let closeButton = document.getElementsByClassName('close')[0];
 let closeButtonTooltip = document.getElementsByClassName('tooltip-close')[0];
-let connectedThemeOption = document.getElementById('connected');
-let connectedBlueThemeOption = document.getElementById('connectedBlue');
-let clearThemeOption = document.getElementById('clear');
-let connectedDarkBlueThemeOption = document.getElementById('connectedDarkBlue');
+
 let connectedDarkThemeOption = document.getElementById('connectedDark');
 let clearDarkThemeOption = document.getElementById('clearDark');
+let matrixThemeOption = document.getElementById('matrix');
+let glitchThemeOption = document.getElementById('glitch');
 
 let quote = '';
 let author = '';
+let book = '';
+let collector = '';
+let like = '';
+let collectDate = '';
 
 function loadJSON(callback) {
 
@@ -32,38 +35,73 @@ function newQuote() {
 
     quote = quotes[randomNumber].quote;
     author = quotes[randomNumber].author;
+    book = quotes[randomNumber].book || '';
+    collector = quotes[randomNumber].collector || '';
+    like = quotes[randomNumber].like || 0;
+    collectDate = quotes[randomNumber].collectDate || '';
 
-    setQuote(quote, author);
+    setQuote(quote, author, book, collector, like, collectDate);
   });
 }
 
-function setQuote(quote, author) {
+function setQuote(quote, author, book, collector, like, collectDate) {
   console.log("setting quote :", quote);
   document.getElementById('quote').innerHTML = quote;
   document.getElementById('author').innerHTML = author;
+  document.getElementById('book').innerHTML = book;
+  document.getElementById('collector').innerHTML = collector;
+  document.getElementById('like').innerHTML = like;
+  
+  // 날짜 형식 변환 (YYYY-MM-DD -> YYYY. MM. DD.)
+  if (collectDate) {
+    const date = new Date(collectDate);
+    const formattedDate = `${date.getFullYear()}. ${String(date.getMonth() + 1).padStart(2, '0')}. ${String(date.getDate()).padStart(2, '0')}.`;
+    document.getElementById('collectDate').innerHTML = formattedDate;
+  } else {
+    document.getElementById('collectDate').innerHTML = '';
+  }
+}
+
+// 기존 캔버스 요소들을 정리하는 함수
+function cleanupCanvas() {
+  // 기존 캔버스 요소들 제거
+  const existingCanvas = document.getElementById('canvas');
+  if (existingCanvas) {
+    existingCanvas.remove();
+  }
+  
+  // 매트릭스 캔버스 제거
+  const matrixCanvas = document.querySelector('canvas[style*="z-index: -1"]');
+  if (matrixCanvas) {
+    matrixCanvas.remove();
+  }
+  
+  // glitch 캔버스 제거
+  destroyGlitchTheme();
 }
 
 let applyTheme = () => {
   let theme = localStorage.getItem('theme');
 
-  if (theme === 'clear') {
-    settingGearColorInvert(false);
-    clear();
-  } else if (theme === 'connected' || !theme) {
-    settingGearColorInvert(false);
-    canvasDots();
-  } else if (theme === 'connectedBlue') {
+  // 기존 캔버스 정리
+  cleanupCanvas();
+  
+  // 매트릭스 테마 정리
+  destroyMatrixTheme();
+
+  if (!theme || theme === 'clearDark') {
     settingGearColorInvert(true);
-    canvasDots('#fff', '#2196F3', '#fff');
-  } else if (theme === 'connectedDarkBlue') {
-    settingGearColorInvert(true);
-    canvasDots('#5cdb95', '#05386b', '#edf5e1');
+    clear('#fff', '#000');
   } else if (theme === 'connectedDark') {
     settingGearColorInvert(true);
     canvasDots('#fff', '#000', '#fff');
-  } else if (theme === 'clearDark') {
+  } else if (theme === 'matrix') {
     settingGearColorInvert(true);
-    clear('#fff', '#000');
+    initMatrixTheme();
+  } else if (theme === 'glitch') {
+    settingGearColorInvert(true);
+    destroyGlitchTheme();
+    initGlitchTheme();
   }
 };
 
@@ -91,37 +129,25 @@ closeButtonTooltip.addEventListener('click', () => {
   turnTooltipOff();
 });
 
-connectedThemeOption.addEventListener('click', () => {
-  setTheme('clear');
-  setTheme('connected');
-  closeNav();
-});
 
-connectedBlueThemeOption.addEventListener('click', () => {
-  setTheme('clear');
-  setTheme('connectedBlue');
-  closeNav();
-});
-
-connectedDarkBlueThemeOption.addEventListener('click', () => {
-  setTheme('clear');
-  setTheme('connectedDarkBlue');
-  closeNav();
-});
 
 connectedDarkThemeOption.addEventListener('click', () => {
-  setTheme('clear');
   setTheme('connectedDark');
-  closeNav();
-});
-
-clearThemeOption.addEventListener('click', () => {
-  setTheme('clear');
   closeNav();
 });
 
 clearDarkThemeOption.addEventListener('click', () => {
   setTheme('clearDark');
+  closeNav();
+})
+
+matrixThemeOption.addEventListener('click', () => {
+  setTheme('matrix');
+  closeNav();
+})
+
+glitchThemeOption.addEventListener('click', () => {
+  setTheme('glitch');
   closeNav();
 });
 
@@ -130,10 +156,11 @@ function checkStorageForTooltipInformation() {
 
   if (hide) {
     let tooltipElement = document.getElementsByClassName('tooltip')[0];
-    let parent = tooltipElement.parentElement;
-
-    // Remove the element
-    parent.removeChild(tooltipElement);
+    if (tooltipElement && tooltipElement.parentElement) {
+      let parent = tooltipElement.parentElement;
+      // Remove the element
+      parent.removeChild(tooltipElement);
+    }
   }
 }
 

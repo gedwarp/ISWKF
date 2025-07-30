@@ -61,6 +61,71 @@ body {
   margin: 0;
 }
 
+.quote-meta {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 200;
+  opacity: 0.8;
+}
+
+.meta-icon {
+  font-size: 1rem;
+}
+
+.meta-item span:not(.meta-icon) {
+  font-weight: 300;
+}
+
+/* Matrix theme specific styles */
+.theme-matrix {
+  background: #000;
+  color: #0F0;
+}
+
+.theme-matrix .quote-block {
+  color: #0F0;
+  text-shadow: 0 0 10px #0F0;
+}
+
+.theme-matrix .meta-item {
+  color: #0F0;
+  opacity: 0.9;
+}
+
+.theme-matrix .meta-icon {
+  color: #0F0;
+}
+
+/* Glitch theme specific styles */
+.theme-glitch {
+  background: #000;
+  color: #fff;
+}
+
+.theme-glitch .quote-block {
+  color: #fff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+}
+
+.theme-glitch .meta-item {
+  color: #fff;
+  opacity: 0.9;
+}
+
+.theme-glitch .meta-icon {
+  color: #fff;
+}
+
 footer {
   font-size: 1rem;
   position: fixed;
@@ -113,7 +178,7 @@ img.settings {
   margin: 1rem;
   opacity: 0.6;
   position: absolute;
-  height: 35px;
+  height: 15px;
 }
 
 img.settings:hover {

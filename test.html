@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Motivation - Test Page</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .test-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .test-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #2196f3;
+            color: white;
+            font-size: 14px;
+        }
+        .test-button:hover {
+            background: #1976d2;
+        }
+        .test-area {
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            min-height: 200px;
+            background: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Daily Motivation Extension Test</h1>
+        
+        <div class="test-info">
+            <h3>Testing Instructions:</h3>
+            <ol>
+                <li>Run <code>npm run build</code> to compile the JavaScript</li>
+                <li>Load the extension in Chrome: chrome://extensions/ → Load unpacked → Select this folder</li>
+                <li>Open a new tab to see the extension in action</li>
+                <li>Use the buttons below to test individual components</li>
+            </ol>
+        </div>
+
+        <div class="test-buttons">
+            <button class="test-button" onclick="testQuoteSystem()">Test Quote System</button>
+            <button class="test-button" onclick="testThemeSystem()">Test Theme System</button>
+            <button class="test-button" onclick="testLocalStorage()">Test LocalStorage</button>
+            <button class="test-button" onclick="clearTestData()">Clear Test Data</button>
+        </div>
+
+        <div class="test-area" id="testOutput">
+            <p>Test results will appear here...</p>
+        </div>
+    </div>
+
+    <script>
+        // Test functions
+        function testQuoteSystem() {
+            const output = document.getElementById('testOutput');
+            output.innerHTML = '<h3>Testing Quote System...</h3>';
+            
+            // Simulate loading quotes
+            fetch('src/data/quotes.json')
+                .then(response => response.json())
+                .then(quotes => {
+                    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+                    output.innerHTML += `
+                        <p><strong>Random Quote:</strong> "${randomQuote.quote}"</p>
+                        <p><strong>Book:</strong> ${randomQuote.book || 'N/A'}</p>
+                        <p><strong>Author:</strong> ${randomQuote.author || 'N/A'}</p>
+                        <p><strong>Collector:</strong> ${randomQuote.collector || 'N/A'}</p>
+                        <p><strong>Likes:</strong> ${randomQuote.like || 0}</p>
+                        <p><strong>Collect Date:</strong> ${randomQuote.collectDate || 'N/A'}</p>
+                        <p><strong>Total Quotes:</strong> ${quotes.length}</p>
+                    `;
+                })
+                .catch(error => {
+                    output.innerHTML += `<p style="color: red;">Error loading quotes: ${error.message}</p>`;
+                });
+        }
+
+        function testThemeSystem() {
+            const output = document.getElementById('testOutput');
+            const themes = ['connectedDark', 'clearDark', 'matrix', 'glitch'];
+            
+            output.innerHTML = '<h3>Testing Theme System...</h3>';
+            output.innerHTML += '<p><strong>Available Themes:</strong></p><ul>';
+            themes.forEach(theme => {
+                output.innerHTML += `<li>${theme}</li>`;
+            });
+            output.innerHTML += '</ul>';
+            
+            const currentTheme = localStorage.getItem('theme') || 'clearDark';
+            output.innerHTML += `<p><strong>Current Theme:</strong> ${currentTheme}</p>`;
+        }
+
+        function testLocalStorage() {
+            const output = document.getElementById('testOutput');
+            output.innerHTML = '<h3>Testing LocalStorage...</h3>';
+            
+            // Test theme storage
+            localStorage.setItem('test-theme', 'connected');
+            const savedTheme = localStorage.getItem('test-theme');
+            output.innerHTML += `<p><strong>Theme Storage Test:</strong> ${savedTheme}</p>`;
+            
+            // Test tooltip storage
+            localStorage.setItem('tooltipShown', 'true');
+            const tooltipShown = localStorage.getItem('tooltipShown');
+            output.innerHTML += `<p><strong>Tooltip Storage Test:</strong> ${tooltipShown}</p>`;
+            
+            // Clean up test data
+            localStorage.removeItem('test-theme');
+        }
+
+        function clearTestData() {
+            const output = document.getElementById('testOutput');
+            localStorage.removeItem('theme');
+            localStorage.removeItem('tooltipShown');
+            output.innerHTML = '<h3>Test Data Cleared</h3><p>LocalStorage has been cleared of test data.</p>';
+        }
+    </script>
+</body>
+</html> 

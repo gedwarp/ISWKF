@@ -1,14 +1,46 @@
 {
   "manifest_version": 3,
-  "name": "Daily Motivation - Motivational Quotes",
-  "version": "2.4.15",
-  "description": "Start every search with motivation. This extension presents you with a motivational quote every time you open a new tab.",
-
+  "name": "Daily DAO Lab Quotes",
+  "version": "2.5.0",
+  "description": "Transform your new tab into a source of daily inspiration with DAO Lab quotes, beautiful themes, and metadata display. Features multiple interactive themes including Matrix and Glitch effects.",
+  
+  "author": "DAO Lab",
+  "homepage_url": "https://daolab.us",
+  
+  "icons": {
+    "16": "src/imgs/icon.svg",
+    "32": "src/imgs/icon.svg",
+    "48": "src/imgs/icon.svg",
+    "128": "src/imgs/icon.svg"
+  },
+  
+  "permissions": [
+    "storage"
+  ],
+  
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
-  "chrome_url_overrides" : {
+  
+  "chrome_url_overrides": {
     "newtab": "index.html"
-  }
+  },
+  
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["src/data/quotes.json"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  
+  "minimum_chrome_version": "88",
+  
+  "offline_enabled": true,
+  
+  "incognito": "split"
 }

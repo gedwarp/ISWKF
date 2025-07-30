@@ -1,0 +1,31 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="url(#iconGradient)" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Quote marks -->
+  <text x="64" y="45" text-anchor="middle" fill="#fff" font-family="serif" font-size="24" font-weight="bold" filter="url(#glow)">"</text>
+  <text x="64" y="85" text-anchor="middle" fill="#fff" font-family="serif" font-size="24" font-weight="bold" filter="url(#glow)">"</text>
+  
+  <!-- Heart symbol -->
+  <path d="M64 70 Q64 60 74 60 Q84 60 84 70 Q84 80 64 90 Q44 80 44 70 Q44 60 54 60 Q64 60 64 70" fill="#ff6b6b" filter="url(#glow)"/>
+  
+  <!-- Small dots representing themes -->
+  <circle cx="30" cy="30" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="98" cy="30" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="30" cy="98" r="3" fill="#fff" opacity="0.8"/>
+  <circle cx="98" cy="98" r="3" fill="#fff" opacity="0.8"/>
+</svg> 

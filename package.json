@@ -1,26 +1,46 @@
 {
-  "name": "daily_motivation",
+  "name": "daily-motivation-extension",
   "version": "2.5.0",
-  "description": "Chrome extension to provide user with a motivational quote everytime a new tab is opened.",
+  "description": "Transform your new tab into a source of daily inspiration with motivational quotes, beautiful themes, and metadata display. Features multiple interactive themes including Matrix and Glitch effects.",
   "main": "none",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d vendor",
-    "minify": "minify src -d lib"
+    "minify": "minify src -d lib",
+    "dev": "npm run build && echo 'Development build complete. Load extension in Chrome.'",
+    "watch": "babel src -d vendor --watch",
+    "clean": "rm -rf vendor lib",
+    "install-deps": "npm install",
+    "serve": "node dev-server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AtaGowani/DailyMotivation.git"
+    "url": "git+https://github.com/daolab/daily-motivation-extension.git"
   },
-  "author": "Ata Gowani",
+  "author": "DAO Lab",
+  "contributors": [
+    "DAO Lab Team"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AtaGowani/DailyMotivation/issues"
+    "url": "https://github.com/daolab/daily-motivation-extension/issues"
   },
-  "homepage": "https://github.com/AtaGowani/DailyMotivation#readme",
+  "homepage": "https://daolab.us",
+  "keywords": [
+    "chrome-extension",
+    "motivation",
+    "quotes",
+    "new-tab",
+    "inspiration",
+    "daily-motivation",
+    "matrix-theme",
+    "glitch-theme"
+  ],
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2"
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "minify": "^5.1.1"
   }
 }
