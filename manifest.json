@@ -1,12 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Daily DAO Lab Quotes",
-  "version": "2.5.0",
-  "description": "Transform your new tab into a source of daily inspiration with DAO Lab quotes, beautiful themes, and metadata display. Features multiple interactive themes including Matrix and Glitch effects.",
-  
-  "author": "DAO Lab",
+  "name": "문장수집가 배경화면",
+  "version": "0.7.1",
+  "description": "아름다운 문장들을 발견하는 공간. Transform your new tab into a source of beautiful sentences display. Features multiple interactive themes including Matrix and Glitch effects.",
+  "author": "DAO Lab 윈즈 & 길",
   "homepage_url": "https://daolab.us",
-  
   "icons": {
     "16": "src/imgs/icon.svg",
     "32": "src/imgs/icon.svg",

@@ -89,6 +89,9 @@ let applyTheme = () => {
   // 매트릭스 테마 정리
   destroyMatrixTheme();
 
+  // 기존 테마 클래스 제거
+  document.body.classList.remove('theme-matrix', 'theme-glitch');
+
   if (!theme || theme === 'clearDark') {
     settingGearColorInvert(true);
     clear('#fff', '#000');
@@ -97,9 +100,11 @@ let applyTheme = () => {
     canvasDots('#fff', '#000', '#fff');
   } else if (theme === 'matrix') {
     settingGearColorInvert(true);
+    document.body.classList.add('theme-matrix');
     initMatrixTheme();
   } else if (theme === 'glitch') {
     settingGearColorInvert(true);
+    document.body.classList.add('theme-glitch');
     destroyGlitchTheme();
     initGlitchTheme();
   }
@@ -152,15 +157,22 @@ glitchThemeOption.addEventListener('click', () => {
 })
 
 function checkStorageForTooltipInformation() {
-  let hide = localStorage.getItem('hideTooltip');
+  try {
+    let hide = localStorage.getItem('hideTooltip');
 
-  if (hide) {
-    let tooltipElement = document.getElementsByClassName('tooltip')[0];
-    if (tooltipElement && tooltipElement.parentElement) {
-      let parent = tooltipElement.parentElement;
-      // Remove the element
-      parent.removeChild(tooltipElement);
+    if (hide) {
+      let tooltipElements = document.getElementsByClassName('tooltip');
+      if (tooltipElements.length > 0) {
+        let tooltipElement = tooltipElements[0];
+        if (tooltipElement && tooltipElement.parentElement) {
+          let parent = tooltipElement.parentElement;
+          // Remove the element
+          parent.removeChild(tooltipElement);
+        }
+      }
     }
+  } catch (error) {
+    console.log('Tooltip cleanup error:', error);
   }
 }
 

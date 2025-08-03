@@ -88,42 +88,58 @@ body {
 
 /* Matrix theme specific styles */
 .theme-matrix {
-  background: #000;
-  color: #0F0;
+  background: #000 !important;
+  color: #0F0 !important;
 }
 
 .theme-matrix .quote-block {
-  color: #0F0;
-  text-shadow: 0 0 10px #0F0;
+  color: #0F0 !important;
+  text-shadow: 0 0 10px #0F0 !important;
+}
+
+.theme-matrix .quote-block #quote {
+  color: #0F0 !important;
+}
+
+.theme-matrix .quote-block #author {
+  color: #0F0 !important;
 }
 
 .theme-matrix .meta-item {
-  color: #0F0;
+  color: #0F0 !important;
   opacity: 0.9;
 }
 
 .theme-matrix .meta-icon {
-  color: #0F0;
+  color: #0F0 !important;
 }
 
 /* Glitch theme specific styles */
 .theme-glitch {
-  background: #000;
-  color: #fff;
+  background: #000 !important;
+  color: #fff !important;
 }
 
 .theme-glitch .quote-block {
-  color: #fff;
-  text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+  color: #fff !important;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff !important;
+}
+
+.theme-glitch .quote-block #quote {
+  color: #fff !important;
+}
+
+.theme-glitch .quote-block #author {
+  color: #fff !important;
 }
 
 .theme-glitch .meta-item {
-  color: #fff;
+  color: #fff !important;
   opacity: 0.9;
 }
 
 .theme-glitch .meta-icon {
-  color: #fff;
+  color: #fff !important;
 }
 
 footer {
