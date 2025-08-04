@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Daily Motivation is a Chrome extension (Manifest V3) that displays motivational quotes on new tab pages. The extension features multiple interactive themes with animated backgrounds and a settings panel for theme selection.
+sentence-stash-background is a Chrome extension (Manifest V3) that displays motivational quotes on new tab pages. The extension features multiple interactive themes with animated backgrounds and a settings panel for theme selection.
 
 ## Development Commands
 

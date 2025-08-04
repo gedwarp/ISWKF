@@ -1,5 +1,5 @@
 <p align="center"><img src="https://raw.githubusercontent.com/daolab/daily-motivation-extension/master/.github/logo.png" alt="logo" height="150px"></p>
-<h1 align="center">Daily Motivation Extension</h1>
+<h1 align="center">sentence-stash-background</h1>
 
 ## 🚀 Transform Your New Tab Experience
 
@@ -47,3 +47,4 @@ A Chrome extension that displays inspirational quotes with rich metadata (book, 
 - https://github.com/AtaGowani/daily-motivation/
 - https://github.com/jvisualschool/404_matrix/
 - https://github.com/metaory/glitcher-app
+- https://github.com/jhammann/sakura

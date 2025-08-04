@@ -36,6 +36,7 @@ npm run build
 - **Connected Dark** - Dark animated dots canvas
 - **Matrix** - Matrix-style digital rain effect
 - **Glitch** - Cyberpunk glitch effects with RGB separation
+- **Snow** - Snowflakes falling with white colors on black background
 
 ### 5. Test Components Locally
 

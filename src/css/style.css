@@ -114,6 +114,17 @@ body {
   color: #0F0 !important;
 }
 
+/* Matrix 테마에서 설정 기어 아이콘 가시성 향상 */
+.theme-matrix img.settings {
+  opacity: 0.9 !important;
+  filter: drop-shadow(0 0 2px rgba(0, 255, 0, 0.5)) !important;
+}
+
+.theme-matrix img.settings:hover {
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 4px rgba(0, 255, 0, 0.8)) !important;
+}
+
 /* Glitch theme specific styles */
 .theme-glitch {
   background: #000 !important;
@@ -140,6 +151,56 @@ body {
 
 .theme-glitch .meta-icon {
   color: #fff !important;
+}
+
+/* Glitch 테마에서 설정 기어 아이콘 가시성 향상 */
+.theme-glitch img.settings {
+  opacity: 0.9 !important;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5)) !important;
+}
+
+.theme-glitch img.settings:hover {
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)) !important;
+}
+
+/* Snow theme specific styles */
+.theme-snow {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+.theme-snow .quote-block {
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
+}
+
+.theme-snow .quote-block #quote {
+  color: #ffffff !important;
+}
+
+.theme-snow .quote-block #author {
+  color: #e0e0e0 !important;
+}
+
+.theme-snow .meta-item {
+  color: #e0e0e0 !important;
+  opacity: 0.9;
+}
+
+.theme-snow .meta-icon {
+  color: #ffffff !important;
+}
+
+/* Snow 테마에서 설정 기어 아이콘 가시성 향상 */
+.theme-snow img.settings {
+  opacity: 0.9 !important;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5)) !important;
+}
+
+.theme-snow img.settings:hover {
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8)) !important;
 }
 
 footer {

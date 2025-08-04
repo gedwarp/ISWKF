@@ -6,6 +6,7 @@ let connectedDarkThemeOption = document.getElementById('connectedDark');
 let clearDarkThemeOption = document.getElementById('clearDark');
 let matrixThemeOption = document.getElementById('matrix');
 let glitchThemeOption = document.getElementById('glitch');
+let snowThemeOption = document.getElementById('snow');
 
 let quote = '';
 let author = '';
@@ -78,6 +79,9 @@ function cleanupCanvas() {
   
   // glitch 캔버스 제거
   destroyGlitchTheme();
+  
+  // snow 캔버스 제거
+  destroySnowTheme();
 }
 
 let applyTheme = () => {
@@ -90,7 +94,7 @@ let applyTheme = () => {
   destroyMatrixTheme();
 
   // 기존 테마 클래스 제거
-  document.body.classList.remove('theme-matrix', 'theme-glitch');
+  document.body.classList.remove('theme-matrix', 'theme-glitch', 'theme-snow');
 
   if (!theme || theme === 'clearDark') {
     settingGearColorInvert(true);
@@ -107,6 +111,11 @@ let applyTheme = () => {
     document.body.classList.add('theme-glitch');
     destroyGlitchTheme();
     initGlitchTheme();
+  } else if (theme === 'snow') {
+    settingGearColorInvert(false);
+    document.body.classList.add('theme-snow');
+    destroySnowTheme();
+    initSnowTheme();
   }
 }
 
@@ -153,6 +162,11 @@ matrixThemeOption.addEventListener('click', () => {
 
 glitchThemeOption.addEventListener('click', () => {
   setTheme('glitch');
+  closeNav();
+})
+
+snowThemeOption.addEventListener('click', () => {
+  setTheme('snow');
   closeNav();
 })
 

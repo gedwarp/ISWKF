@@ -1,6 +1,6 @@
 {
-  "name": "daily-motivation-extension",
-  "version": "2.5.0",
+  "name": "sentence-stash-background",
+  "version": "0.7.1",
   "description": "Transform your new tab into a source of daily inspiration with motivational quotes, beautiful themes, and metadata display. Features multiple interactive themes including Matrix and Glitch effects.",
   "main": "none",
   "scripts": {
